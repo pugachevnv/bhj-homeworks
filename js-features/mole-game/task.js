@@ -23,7 +23,7 @@ for (let i = 1; i < 10; i++) {
             startGame();
         }
         if (Number(statusLost.textContent) === 5) {
-            alert("Вы выиграли!");
+            alert("Вы проиграли!");
             startGame();
         }
     }   
