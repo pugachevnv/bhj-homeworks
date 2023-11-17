@@ -1,4 +1,4 @@
-const reveal = document.querySelector('.reveal');
+const reveal = Array.from(document.querySelectorAll('.reveal'));
 
 function isVisible(element) {
     const { top, bottom } = element.getBoundingClientRect();
@@ -12,12 +12,12 @@ function isVisible(element) {
     return true;
 }
 
-setInterval(() => {
-    if (isVisible(reveal)) {
-        reveal.classList.add('reveal_active')
-    } else {
-        reveal.classList.remove('reveal_active')
-    }
-
-    console.log(isVisible(reveal))
-}, 500)
+reveal.forEach((item) => {
+    setInterval(() => {
+        if (isVisible(item)) {
+            item.classList.add('reveal_active')
+        } else {
+            item.classList.remove('reveal_active')
+        }
+    }, 500)
+});
