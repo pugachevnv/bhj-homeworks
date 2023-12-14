@@ -4,12 +4,18 @@ tooltipContent.className = 'tooltip';
 
 tooltips.forEach(tooltip => {
     tooltip.addEventListener('click', (event) => {
+        
         event.preventDefault();
+        
         tooltipContent.textContent = tooltip.title;
+        
+        let tooltipRect = tooltip.getBoundingClientRect();
+        tooltipContent.style.left = `${tooltipRect.left}px`;
+        tooltipContent.style.top = `${tooltipRect.bottom}px`;
+
         tooltipContent.classList.toggle('tooltip_active');
+        
         tooltip.insertAdjacentElement('afterEnd', tooltipContent);
-        // tooltip.insertAdjacentHTML("beforeBegin", )
-        console.log(tooltipContent);
 
     });
 });
