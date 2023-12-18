@@ -6,24 +6,26 @@ const addTaskBtn = document.getElementById('tasks__add')
 
 taskForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    if (taskInput.value) {
+    
+    if (taskInput.value.trim()) {
 
         let newTask = document.createElement('div'); 
         newTask.className = 'task';
-        let taskTittle = document.createElement('div');
-        taskTittle.className = 'task__tittle';
-        newTask.appendChild(taskTittle);
-        taskTittle.innerHTML = taskInput.value;
-        
-        const taskRemove = document.createElement('a');
-        taskRemove.href = "#"
-        taskRemove.className = 'task__remove';
-        taskRemove.innerHTML = "&times;";
-        newTask.appendChild(taskRemove);
-        
+
+        newTask.innerHTML = `
+            <div class="task__title">${taskInput.value}</div>
+            <a href="#" class="task__remove">&times;</a>
+        `;
+
         taskList.appendChild(newTask);
+
         taskForm.reset();
-        taskRemove.onclick = () => newTask.remove();
-    };
+
+        newTask.querySelector('.task__remove').onclick = () => newTask.remove();
+
+    } else {
+        taskForm.reset();
+    }
+
 });
 
