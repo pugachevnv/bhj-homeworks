@@ -30,16 +30,10 @@ products.forEach(product => {
             const newProductCart = document.createElement('div');
             newProductCart.className = 'cart__product';
             newProductCart.dataset.id = product.dataset.id;
-    
-            const productImageCart = document.createElement('img');
-            productImageCart.className = 'cart__product-image';
-            productImageCart.src = imageProduct.src;
-            newProductCart.appendChild(productImageCart);
-    
-            const productCountCart = document.createElement('div');
-            productCountCart.className = 'cart__product-count';
-            productCountCart.textContent = quantityControl.textContent;
-            newProductCart.appendChild(productCountCart);
+            newProductCart.innerHTML = `
+                <img class="cart__product-image" src="${imageProduct.src}">
+                <div class="cart__product-count">${quantityControl.textContent}</div>
+            `;
 
             cart.appendChild(newProductCart);
         }
